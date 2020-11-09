@@ -1,5 +1,6 @@
 # forest-property-management
 Example of a property management use case handled with Forest Admin
+
 ![Image of the UI](http://g.recordit.co/CMKczSl14n.gif)
 
 
@@ -12,9 +13,10 @@ The features that need to be available are:
 * add new `repartition keys` to the `property` (handled using a custom action)
 ## Data model
 The following explains the data model used in this example:
+[to be updated]
 ## Features implemented
-* virtual relationship between a `property` and `lots` (through `buildings`) => check out the forest/properties.js and routes/properties.js file
-* virtual relationship between a `property` and `owners` (through `buildings` and `lots`) => check out the forest/properties.js and routes/properties.js file
-* custom action to add new `buildings` to a `property` => check out the forest/properties.js and routes/properties.js file
-* custom action to add new `lots` and `owners` to a `property` => check out the forest/properties.js and routes/properties.js file
-* custom action to add new `repartition keys` to a `property` => check out the forest/properties.js and routes/properties.js file
+* virtual relationship between a `property` and `lots` (through `buildings`) => check out the `forest/properties.js` and `routes/properties.js` file
+* virtual relationship between a `property` and `owners` (through `buildings` and `lots`) => check out the `forest/properties.js` and `routes/properties.js` file
+* custom action to add new `buildings` to a `property` => check out the `forest/properties.js` and `routes/properties.js` file
+* custom action to add new `lots` and `owners` to a `property` => check out the `forest/properties.js` and `routes/properties.js` file
+* custom action to add new `repartition keys` to a `property` => check out the `forest/properties.js` and `routes/properties.js` file
