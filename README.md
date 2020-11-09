@@ -16,6 +16,9 @@ The features that need to be available are:
 ![Building addition gif](https://recordit.co/sXK4nhYwWP/gif)
 
 * add `lots` to one of the `property`'s buildings and link it to an existing `owner`/ create a new `owner` (handled using a custom action)
+
+![Lot addition gif]http://g.recordit.co/7HffDn4sXn.gif
+
 * add new `repartition keys` to the `property` (handled using a custom action)
 ## Data model
 The following explains the data model used in this example:
