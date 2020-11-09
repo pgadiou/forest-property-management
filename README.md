@@ -1,5 +1,7 @@
 # forest-property-management
 Example of a property management use case handled with Forest Admin
+![Image of the UI](http://g.recordit.co/CMKczSl14n.gif)
+
 
 ## Use case presentation
 As a user, I want to handle the registration of new `properties` (including all related data like `buildings` and `lots`) through a simple interface built in Forest Admin.
