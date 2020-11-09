@@ -13,7 +13,7 @@ The features that need to be available are:
 
 * add `buildings` to the `property` (handled using a custom action)
 
-![Building addition gif](http://g.recordit.co/FunMc8E7Y6.gif)
+![Building addition gif](https://recordit.co/sXK4nhYwWP/gif)
 
 * add `lots` to one of the `property`'s buildings and link it to an existing `owner`/ create a new `owner` (handled using a custom action)
 * add new `repartition keys` to the `property` (handled using a custom action)
