@@ -17,12 +17,13 @@ The features that need to be available are:
 
 * add `lots` to one of the `property`'s buildings and link it to an existing `owner`/ create a new `owner` (handled using a custom action)
 
-![Lot addition gif]http://g.recordit.co/7HffDn4sXn.gif
+![Lot addition gif](http://g.recordit.co/fd8tW5w5P1.gif)
 
 * add new `repartition keys` to the `property` (handled using a custom action)
 ## Data model
 The following explains the data model used in this example:
 [to be updated]
+Properties => Buildings => Lots <= Owners
 ## Features implemented
 * virtual relationship between a `property` and `lots` (through `buildings`) => check out the `forest/properties.js` and `routes/properties.js` file
 * virtual relationship between a `property` and `owners` (through `buildings` and `lots`) => check out the `forest/properties.js` and `routes/properties.js` file
