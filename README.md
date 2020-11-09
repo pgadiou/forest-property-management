@@ -22,8 +22,8 @@ The features that need to be available are:
 * add new `repartition keys` to the `property` (handled using a custom action)
 ## Data model
 The following explains the data model used in this example:
-[to be updated]
-Properties => Buildings => Lots <= Owners
+
+![data model](https://github-ressources.s3.eu-west-3.amazonaws.com/Screenshot+2020-11-09+at+20.08.57.png)
 ## Features implemented
 * virtual relationship between a `property` and `lots` (through `buildings`) => check out the `forest/properties.js` and `routes/properties.js` file
 * virtual relationship between a `property` and `owners` (through `buildings` and `lots`) => check out the `forest/properties.js` and `routes/properties.js` file
