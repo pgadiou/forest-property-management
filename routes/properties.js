@@ -4,6 +4,8 @@ const models = require('../models');
 
 const router = express.Router();
 const permissionMiddlewareCreator = new PermissionMiddlewareCreator('properties');
+const lotsPermissionMiddlewareCreator = new PermissionMiddlewareCreator('lots');
+
 
 // This file contains the logic of every route in Forest Admin for the collection properties:
 // - Native routes are already generated but can be extended/overriden - Learn how to extend a route here: https://docs.forestadmin.com/documentation/v/v6/reference-guide/routes/extend-a-route
@@ -91,7 +93,7 @@ router.get('/properties/:recordId/relationships/owners', permissionMiddlewareCre
     .catch(next);
 });
 
-router.get('/properties/:recordId/relationships/lots', permissionMiddlewareCreator.list(), (request, response, next) => {
+router.get('/properties/:recordId/relationships/lots', lotsPermissionMiddlewareCreator.list(), (request, response, next) => {
   const propertyId = request.params.recordId;
   const limit = parseInt(request.query.page.size, 10) || 20;
   const offset = (parseInt(request.query.page.number, 10) - 1) * limit;
