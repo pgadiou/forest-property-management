@@ -19,6 +19,10 @@ The features that need to be available are:
 
 ![Lot addition gif](http://g.recordit.co/fd8tW5w5P1.gif)
 
+* display the stages of the registration process of a new `property` through a `registration process` virtual field (handled using a custom field)
+
+![registration process](https://github-ressources.s3.eu-west-3.amazonaws.com/Screenshot+2021-06-14+at+15.04.56.png)
+
 * add new `repartition keys` to the `property` (handled using a custom action)
 ## Data model
 The following explains the data model used in this example:
@@ -30,3 +34,5 @@ The following explains the data model used in this example:
 * custom action to add new `buildings` to a `property` => check out the `forest/properties.js` and `routes/properties.js` file
 * custom action to add new `lots` and `owners` to a `property` => check out the `forest/properties.js` and `routes/properties.js` file
 * custom action to add new `repartition keys` to a `property` => check out the `forest/properties.js` and `routes/properties.js` file
+* custom field `registration process` to display the stages of the registration process => check out the `forest/properties.js` file
+* custom field `property label` to display the name and city address of the property => check out the `forest/properties.js` file
