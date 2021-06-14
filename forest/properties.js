@@ -1,10 +1,6 @@
 const { collection } = require('forest-express-sequelize');
+const models = require('../models')
 
-// This file allows you to add to your Forest UI:
-// - Smart actions: https://docs.forestadmin.com/documentation/reference-guide/actions/create-and-manage-smart-actions
-// - Smart fields: https://docs.forestadmin.com/documentation/reference-guide/fields/create-and-manage-smart-fields
-// - Smart relationships: https://docs.forestadmin.com/documentation/reference-guide/relationships/create-a-smart-relationship
-// - Smart segments: https://docs.forestadmin.com/documentation/reference-guide/segments/smart-segments
 collection('properties', {
   actions: [
     {
@@ -79,6 +75,53 @@ collection('properties', {
       field: 'lots',
       type: ['String'],
       reference: 'lots.id',
+    }, {
+      field: 'property label',
+      type: 'String',
+      get: (record) => `${record.addressCity} - ${record.name}`,
+    }, {
+      field: 'registration process',
+      type: 'String',
+      get: async (record) => {
+        const recordWithRelationships = await models.properties.findByPk(record.id, {
+          include: [{
+            model: models.buildings,
+            as: 'buildings',
+            include: [{
+              model: models.lots,
+              as: 'lots',
+            }],
+          }, {
+            model: models.repartitionKeys,
+            as: 'repartitionKeys',
+          }],
+        });
+        const lotsCount = await models.lots.count({
+          include: [{
+            model: models.buildings,
+            as: 'building',
+            where: { propertyIdKey: record.id },
+          }],
+        });
+        const stepsNameList = {
+          'buildings': recordWithRelationships.buildings.length,
+          'lots': lotsCount,
+          'repartitionKeys': recordWithRelationships.repartitionKeys.length,
+        };
+        let stepsList = '';
+        const stepsDivStyle = 'margin: 24px 0px; color: #415574';
+        const stepsNameStyle = 'padding: 6px 16px; margin: 12px; background-color:#b5c8d05e; border-radius: 6px';
+        const stepsValueStyleRed = 'padding: 6px 12px; background-color:#ff7f7f87; border-radius: 6px';
+        const stepsValueStyleGreen = 'padding: 6px 12px; background-color:#7FFF7F; border-radius: 6px';
+        for (const [key, value] of Object.entries(stepsNameList)) {
+          let stepsValueStyle = value ? stepsValueStyleGreen :stepsValueStyleRed;
+          stepsList += `<div style="${stepsDivStyle}">
+            <span style="${stepsNameStyle}">registered ${key}</span>
+            <span style="${stepsValueStyle}">${value}</span>
+          </div>`;
+        }
+        return stepsList;
+      },
     },
   ],
   segments: [],
