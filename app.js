@@ -20,18 +20,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-let allowedOrigins = [/\.forestadmin\.com$/];
-
+let allowedOrigins = [/\.forestadmin\.com$/, /localhost:\d{4}$/];
 if (process.env.CORS_ORIGINS) {
   allowedOrigins = allowedOrigins.concat(process.env.CORS_ORIGINS.split(','));
 }
-
-app.use(cors({
+const corsConfig = {
   origin: allowedOrigins,
   allowedHeaders: ['Authorization', 'X-Requested-With', 'Content-Type'],
   maxAge: 86400, // NOTICE: 1 day
   credentials: true,
+};
+app.use('/forest/authentication', cors({
+  ...corsConfig,
+  // The null origin is sent by browsers for redirected AJAX calls
+  // we need to support this in authentication routes because OIDC
+  // redirects to the callback route
+  origin: corsConfig.origin.concat('null'),
 }));
+app.use(cors(corsConfig));
 
 app.use(jwt({
   secret: process.env.FOREST_AUTH_SECRET,
