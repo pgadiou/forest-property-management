@@ -27,7 +27,7 @@ The features that need to be available are:
 ## Data model
 The following explains the data model used in this example:
 
-![data model](https://drive.google.com/file/d/1MMvAwmZodeYgH3PadBJ-uEexn0saehuP/view)
+![data model](https://public-github-resources.s3.eu-west-3.amazonaws.com/Screenshot+2020-11-09+at+20.08.57+(1).png)
 ## Features implemented
 * virtual relationship between a `property` and `lots` (through `buildings`) => check out the `forest/properties.js` and `routes/properties.js` file
 * virtual relationship between a `property` and `owners` (through `buildings` and `lots`) => check out the `forest/properties.js` and `routes/properties.js` file
